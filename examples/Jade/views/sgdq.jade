@@ -1,0 +1,93 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='css/sgdq.css')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet')
+    title Summer Games Done Quick Customizable Schedule
+  body
+    header.
+      Summer Games Done Quick
+    #container
+      #fullschedule
+        h2 Full Schedule
+        table
+          tr.bt
+            th.fluid
+              b Game
+            th.fluid
+              b Runners
+            th.fluid
+              b Length
+            th.fixed
+              b Time left
+          for game in fullSchedule
+            tr.bt
+              td
+                table
+                  tr
+                    td.gt!= game.title
+                  tr
+                    td.rt!= game.runType
+              td.nrml!= game.runner
+              td.nrml!= game.compTime
+              td
+                table
+                  tr
+                    td.gt!= game.prettyHours
+                  tr
+                    td.rt!= game.fullDate    
+      #custschedule
+        h2 Customized Schedule
+        table
+          tr.bt
+            th.fluid
+              b Game
+            th.fluid
+              b Runner
+            th.fluid
+              b Length
+            th.fixed
+              b Time left
+          each game, index in custSchedule
+            tr.bt
+              td
+                table
+                  tr
+                    td.gt!= game.title
+                  tr
+                    td.rt!= game.runType
+              td.nrml!= game.runner
+              td.nrml!= game.compTime
+              td
+                table
+                  tr
+                    td.gt!= game.prettyHours
+                  tr
+                    td.rt!= game.fullDate   
+      #sidebar
+        h2 Settings
+        p.
+          Enter the games you want to see in the schedule. The rest will be hidden. Seperate multiple entries with '|'.
+        form(name="status", method="post", action="/sgdq")
+          textarea(name="showonly", id="showonly")
+          br
+          input(type="submit", name="submit", id="submit", value="Add game")
+        br
+        form(name="clear", method="post", action="/sgdqck")
+          input(type="submit", name="submit", id="submit", value="Clear cookies")
+        br
+        table
+          tr.bt
+            th.fxdclr
+              a(href='https://www.twitch.tv/gamesdonequick') Twitch Stream
+            th.fxdclr
+              a(href='https://gamesdonequick.com/schedule') Official Schedule
+          tr.bt
+            th.fxdclr
+              a(href='https://gamesdonequick.com/tracker/donations/sgdq2016') Donation tracker
+            th.fxdclr
+              a(href='https://www.reddit.com/r/speedrun') Subreddit
+    footer
+      p. 
+        &copy; 2016

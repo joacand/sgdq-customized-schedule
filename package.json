@@ -1,0 +1,22 @@
+{
+  "name": "sgdq-customized-schedule",
+  "version": "1.0.0",
+  "description": "A customizable schedule for Summer Games Done Quick using Node.js, Express and Jade",
+  "main": "sgdq.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joacand/sgdq-customized-schedule.git"
+  },
+  "scripts": {
+    "test": "jshint sgdq.js"
+  },
+  "author": "Joacim Andersson",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.72.0",
+    "tabletojson": "^0.4.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.2"
+  }
+}
