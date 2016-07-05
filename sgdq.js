@@ -94,6 +94,7 @@ function genGameList(htmlSource, gamesToShowList, sourceIsNew) {
 }
 
 function fillGameList(games) {
+  cachedGameList = [];
   for (var i = 1; i < games.length; i++) {
     var date = games[i][0];
     var title = games[i][1];
