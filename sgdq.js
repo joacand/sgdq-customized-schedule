@@ -83,7 +83,8 @@ function genGameList(htmlSource, gamesToShowList, sourceIsNew) {
       console.log("Cache empty, updating cache");
     var jsonData = tabletojson.convert(htmlSource);
     var games = jsonData[0];
-    fillGameList(games);
+    if (games !== undefined)
+      fillGameList(games);
   } else {
     console.log("Reusing old cache");
     gameList = cachedGameList;
@@ -115,13 +116,15 @@ function fillGameList(games) {
 }
 
 function removeOldGameEntries() {
-  var i = 0;
-  while (cachedGameList[i].getHoursToGo() <= 0 || i >= cachedGameList.length) {
-    i++;
-  }
-  cachedGameList.splice(0,i-1); // Remove one less since we want the current game displayed as well
+  if (cachedGameList.length !== 0) {
+    var i = 0;
+    while (cachedGameList[i].getHoursToGo() <= 0 || i >= cachedGameList.length) {
+      i++;
+    }
+    cachedGameList.splice(0,i-1); // Remove one less since we want the current game displayed as well
 
-  gameList = cachedGameList;
+    gameList = cachedGameList;
+  }
 }
 
 function removeUnwantedGames(gamesToShowList) {
